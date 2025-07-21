@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Route & Charge Calculator</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+</head>
+<body>
+  <h1>Route & Charge Calculator</h1>
+
+  <h3>Enter Locations</h3>
+  <form id="route-form">
+    <label for="start-location">Start Location:</label><br />
+    <input type="text" id="start-location" name="start-location" placeholder="Start location" autocomplete="off" required />
+    <br />
+    <label for="end-location">End Location:</label><br />
+    <input type="text" id="end-location" name="end-location" placeholder="End location" autocomplete="off" required />
+    <br />
+    <button type="submit">Calculate Route</button>
+  </form>
+
+  <div id="route-result"></div>
+
+  <div id="map-container">
+    <div id="map"></div>
+  </div>
+
+  <!-- Leaflet -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <!-- Polyline decoder -->
+  <script src="https://cdn.jsdelivr.net/npm/@mapbox/polyline@1.1.1/src/polyline.min.js"></script>
+  <!-- Google Places API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC58JRaLlXPfWGzU2POxSsHJo1lBUSIGCU&libraries=places" async defer></script>
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/api/calculate-route", "destination": "/api/calculate-route.js" }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Route & Charge Calculator API",
+    "description": "Calculate best route and cost based on duration.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/api/calculate-route": {
+      "get": {
+        "summary": "Calculate route between two locations",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "start",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Start location"
+          },
+          {
+            "in": "query",
+            "name": "end",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "End location"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Route data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RouteResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing query parameters"
+          },
+          "500": {
+            "description": "Internal server or API error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Route": {
+        "type": "object",
+        "properties": {
+          "start": { "type": "string" },
+          "end": { "type": "string" },
+          "distance_km": { "type": "string" },
+          "distance_miles": { "type": "string" },
+          "duration": { "type": "string" },
+          "duration_minutes": { "type": "integer" },
+          "charge": { "type": "integer" },
+          "polyline": { "type": "string" }
+        }
+      },
+      "RouteResponse": {
+        "type": "object",
+        "properties": {
+          "shortest": { "$ref": "#/components/schemas/Route" },
+          "routes": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Route" }
+          }
+        }
+      }
+    }
+  }
+}
